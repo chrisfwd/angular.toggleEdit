@@ -11,14 +11,14 @@
     <!-- import bootstrap -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-    <link rel="stylesheet" type="text/css" href="toggleEdit.css">
+    <link rel="stylesheet" type="text/css" href="app.css">
 
 </head>
 
 <body ng-controller="AppController as app"
       style="background-color: #e8e8e8; padding-top:100px;">
 
-    <form name="form"
+    <form name="demoForm"
           novalidate
           ng-submit="app.update(form)">
 
@@ -35,61 +35,27 @@
                     <div class="panel-body">
 
                         <te-text-input
-                                te-form="form"
-                                te-input-name="'firstName'"
+                                te-form="demoForm"
                                 te-input-type="'text'"
                                 te-label="'First Name'"
                                 te-value="app.user.firstName"
+                                te-required="true"
                                 te-is-editable="app.isEditable"></te-text-input>
 
                         <te-text-input
-                                te-form="form"
-                                te-input-name="'lastName'"
+                                te-form="demoForm"
                                 te-input-type="'text'"
                                 te-label="'Last Name'"
                                 te-value="app.user.lastName"
                                 te-is-editable="app.isEditable"></te-text-input>
 
                         <te-text-input
-                                te-form="form"
-                                te-input-name="'email'"
+                                te-form="demoForm"
                                 te-input-type="'email'"
                                 te-label="'Email'"
                                 te-value="app.user.email"
+                                te-required="true"
                                 te-is-editable="app.isEditable"></te-text-input>
-
-                        <!--<div class="form-group" ng-class="{'has-error':form.email.$invalid && form.email.$touched}">-->
-
-                            <!--<label class="control-label">email</label>-->
-
-                            <!--<div class="te-group" >-->
-
-                                <!--<p class="form-control-static te-value-readonly"-->
-                                   <!--ng-show="!app.isEditable">{{app.user.email}}</p>-->
-
-                                <!--<input name="email"-->
-                                       <!--type="email"-->
-                                       <!--class="form-control te-value-editable"-->
-                                       <!--ng-show="app.isEditable"-->
-                                       <!--ng-cloak-->
-                                       <!--ng-model="app.user.email"-->
-                                       <!--required />-->
-                            <!--</div>-->
-
-                            <!--<div ng-if="app.isEditable && form.email.$touched && form.$invalid">-->
-
-                                <!--<p class="text-danger"-->
-                                   <!--ng-if="form.email.$error.required"-->
-                                   <!--ng-cloak>Email is required.</p>-->
-
-                                <!--<p class="text-danger"-->
-                                   <!--ng-if="form.email.$error.email"-->
-                                   <!--ng-cloak>Please enter a valid email.</p>-->
-
-                            <!--</div>-->
-
-
-                        <!--</div>-->
 
                         <p>
 
@@ -103,7 +69,7 @@
                                     class="btn btn-primary"
                                     ng-if="app.isEditable"
                                     ng-cloak
-                                    ng-disabled="form.$invalid">Save</button>
+                                    ng-disabled="demoForm.$invalid">Save</button>
 
                             <button type="button"
                                     class="btn btn-default"
@@ -113,7 +79,7 @@
                         </p>
 
                         <p class="alert alert-danger"
-                           ng-show="form.$invalid && !form.$pristine"
+                           ng-show="demoForm.$invalid && !form.$pristine"
                            ng-cloak>Check above for errors.</p>
 
                     </div>

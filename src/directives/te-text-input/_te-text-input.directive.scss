@@ -1,7 +1,49 @@
+$inputHeight: 34px;
 
+@mixin transition-delay($delay: 0.1s) {
+    transition-delay: $delay;
 
-[ng\:cloak], [ng-cloak], .ng-cloak {
-    display: none;
+    /* As of 1.4.4, this must always be set: it signals ngAnimate
+      to not accidentally inherit a delay property from another CSS class */
+    transition-duration: 0s;
 }
 
-@import "";
+te-text-input {
+
+    .te-group {
+        position: relative;
+        height: $inputHeight;
+        overflow: hidden;
+    }
+
+    .te-value-readonly,
+    .te-value-editable {
+        position: absolute;
+        opacity: 1;
+        top: 0;
+
+        /* animation duration */
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+    }
+
+    /* hidden properties
+       move out of sight and fade out */
+    .te-value-readonly.ng-hide {
+        opacity: 0;
+        top: 0 - $inputHeight;
+    }
+
+    .te-value-editable.ng-hide {
+        opacity: 0;
+        top: $inputHeight;
+    }
+
+    .te-value-readonly.ng-hide-stagger,
+    .te-value-editable.ng-hide-stagger {
+        @include transition-delay();
+    }
+
+}

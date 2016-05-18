@@ -3,17 +3,19 @@
 
     angular
         .module('app', ['ngAnimate', 'teTextInput'])
-        .controller('AppController', AppController);
+        .controller('AppController', AppController)
+        .factory('formService', formService);
 
-    function AppController() {
+    AppController.$inject = ['formService'];
+
+
+
+    function AppController(formService) {
 
         var vm = this;
-
         vm.master = getPerson();
         vm.user = angular.copy(vm.master);
-        
         vm.isEditable = false;
-        
         vm.makeEditable = makeEditable;
         vm.update = update;
         vm.cancelChanges = cancelChanges;
@@ -47,12 +49,28 @@
          */
         
         function getPerson(){
+            return formService.getPerson();
+        }
+
+    }
+
+
+
+    function formService(){
+
+        return {
+            getPerson: getPerson
+        };
+
+        function getPerson(){
+            debugger;
             return {
                 firstName: "Chris",
                 lastName: "Lindsey",
-                email: "clindsey@celerity.com"
+                email: "chris@gmail.com"
             };
         }
+
     }
 
 })(window.angular);

@@ -14,15 +14,15 @@
                ng-show="isEditable"
                ng-cloak
                ng-model="value"
-               required />
+               ng-required="isRequired" />
     </div>
 
     <p class="text-danger"
-       ng-if="form[inputName].$error.required && isEditable && form[inputName].$touched && form.$invalid"
+       ng-if="isRequired && form[inputName].$error.required && isEditable && form[inputName].$touched && form.$invalid"
        ng-cloak >{{label}} is required.</p>
 
     <p class="text-danger"
-       ng-if="inputType === 'email' && form[inputName].$error.email && isEditable && form[inputName].$touched && form.$invalid"
+       ng-if="isRequired && inputType === 'email' && form[inputName].$error.email && isEditable && form[inputName].$touched && form.$invalid"
        ng-cloak >Please enter a valid email.</p>
 
 </div>

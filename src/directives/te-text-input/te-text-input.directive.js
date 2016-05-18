@@ -10,20 +10,22 @@
             
     function teTextInputDirective() {
         return {
-            restrict: 'EA',
+            restrict: 'E',
             scope: {
                 label: '=teLabel',
                 value: '=teValue',
                 isEditable: '=teIsEditable',
                 form: '=teForm',
-                inputName: '=teInputName',
-                inputType: '=teInputType'
+                inputType: '=teInputType',
+                isRequired: '=teRequired'
             },
             link: linkFunction,
             templateUrl: 'directives/te-text-input/te-text-input.directive.html'
         };
 
         function linkFunction(scope, element, attrs, controllers) {
+            //debugger;
+            scope.inputName = scope.form.$name + "." + scope.label.replace(/ /g,'').toLowerCase() + scope.$id;
 
         }
     }

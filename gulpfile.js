@@ -1,57 +1,59 @@
-'use strict';
+(function() {
+    'use strict';
 
-/*
- * IMPORT TASKS
- */
+    /*
+     * IMPORT TASKS
+     */
 
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var clean = require('gulp-clean');
-
-
-/*
- * CONFIGURATION
- */
-
-gulp.task('clean', cleanTask);
-gulp.task('copy', ['clean'], copyTask);
-gulp.task('sass', ['clean'], sassTask);
-gulp.task('default', ['sass', 'copy'], defaultTask);
+    var gulp = require('gulp');
+    var sass = require('gulp-sass');
+    var clean = require('gulp-clean');
 
 
-var copyFiles = ['./src/**/*.js', './src/**/*.html'];
-var copyDest = './dist/';
+    /*
+     * CONFIGURATION
+     */
 
-var sassFiles = ['./src/toggleEdit.scss'];
-var sassDest = './dist/';
+    gulp.task('clean', cleanTask);
+    gulp.task('copy', ['clean'], copyTask);
+    gulp.task('sass', ['clean'], sassTask);
+    gulp.task('default', ['sass', 'copy'], defaultTask);
 
 
+    var copyFiles = ['./src/**/*.js', './src/**/*.html'];
+    var copyDest = './dist/';
 
-/*
- * IMPLEMENTATION
- */
+    var sassFiles = ['./src/app.scss'];
+    var sassDest = './dist/';
 
-function cleanTask(){
-    return gulp
-        .src('./dist', {read: false})
-        .pipe(clean());
-}
 
-function copyTask(){
+    /*
+     * IMPLEMENTATION
+     */
 
-    return gulp
-        .src(copyFiles)
-        .pipe(gulp.dest(copyDest));
+    function cleanTask() {
+        return gulp
+            .src('./dist', {read: false})
+            .pipe(clean());
+    }
 
-}
+    function copyTask() {
 
-function defaultTask(){}
+        return gulp
+            .src(copyFiles)
+            .pipe(gulp.dest(copyDest));
 
-function sassTask(){
+    }
 
-    return gulp
-        .src(sassFiles)
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest(sassDest));
+    function defaultTask() {
+    }
 
-}
+    function sassTask() {
+
+        return gulp
+            .src(sassFiles)
+            .pipe(sass().on('error', sass.logError))
+            .pipe(gulp.dest(sassDest));
+
+    }
+})();
