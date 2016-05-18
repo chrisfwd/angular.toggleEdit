@@ -2,7 +2,7 @@
     "use strict";
 
     angular
-        .module('app', ['ngAnimate'])
+        .module('app', ['ngAnimate', 'teTextInput'])
         .controller('AppController', AppController);
 
     function AppController() {

@@ -1,0 +1,28 @@
+<div class="form-group"
+     ng-class="{'has-error':form[inputName].$invalid && form[inputName].$touched}">
+
+    <label class="control-label">{{label}}</label>
+
+    <div class="te-group">
+        <p class="form-control-static te-value-readonly"
+           ng-show="!isEditable"
+           ng-cloak >{{value}}</p>
+
+        <input type="{{inputType}}"
+               name="{{inputName}}"
+               class="form-control te-value-editable"
+               ng-show="isEditable"
+               ng-cloak
+               ng-model="value"
+               required />
+    </div>
+
+    <p class="text-danger"
+       ng-if="form[inputName].$error.required && isEditable && form[inputName].$touched && form.$invalid"
+       ng-cloak >{{label}} is required.</p>
+
+    <p class="text-danger"
+       ng-if="inputType === 'email' && form[inputName].$error.email && isEditable && form[inputName].$touched && form.$invalid"
+       ng-cloak >Please enter a valid email.</p>
+
+</div>

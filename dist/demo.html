@@ -34,91 +34,62 @@
 
                     <div class="panel-body">
 
-                        <div class="form-group"
-                             ng-class="{'has-error':form.firstName.$invalid && form.firstName.$touched}">
+                        <te-text-input
+                                te-form="form"
+                                te-input-name="'firstName'"
+                                te-input-type="'text'"
+                                te-label="'First Name'"
+                                te-value="app.user.firstName"
+                                te-is-editable="app.isEditable"></te-text-input>
 
-                            <label class="control-label">First Name</label>
+                        <te-text-input
+                                te-form="form"
+                                te-input-name="'lastName'"
+                                te-input-type="'text'"
+                                te-label="'Last Name'"
+                                te-value="app.user.lastName"
+                                te-is-editable="app.isEditable"></te-text-input>
 
-                            <div class="te-group">
-                                <p class="form-control-static te-value-readonly"
-                                   ng-show="!app.isEditable"
-                                   ng-cloak >{{app.user.firstName}}</p>
+                        <te-text-input
+                                te-form="form"
+                                te-input-name="'email'"
+                                te-input-type="'email'"
+                                te-label="'Email'"
+                                te-value="app.user.email"
+                                te-is-editable="app.isEditable"></te-text-input>
 
-                                <input name="firstName"
-                                       type="text"
-                                       class="form-control te-value-editable"
-                                       ng-show="app.isEditable"
-                                       ng-cloak
-                                       ng-model="app.user.firstName"
-                                       required />
-                            </div>
+                        <!--<div class="form-group" ng-class="{'has-error':form.email.$invalid && form.email.$touched}">-->
 
-                            <p class="text-danger"
-                               ng-if="form.firstName.$error.required && app.isEditable && form.firstName.$touched && form.$invalid"
-                               ng-cloak>First Name is required.</p>
+                            <!--<label class="control-label">email</label>-->
 
-                        </div>
+                            <!--<div class="te-group" >-->
 
+                                <!--<p class="form-control-static te-value-readonly"-->
+                                   <!--ng-show="!app.isEditable">{{app.user.email}}</p>-->
 
-                        <div class="form-group"
-                             ng-class="{'has-error':form.lastName.$invalid && form.lastName.$touched}">
+                                <!--<input name="email"-->
+                                       <!--type="email"-->
+                                       <!--class="form-control te-value-editable"-->
+                                       <!--ng-show="app.isEditable"-->
+                                       <!--ng-cloak-->
+                                       <!--ng-model="app.user.email"-->
+                                       <!--required />-->
+                            <!--</div>-->
 
-                            <label class="control-label">Last Name</label>
+                            <!--<div ng-if="app.isEditable && form.email.$touched && form.$invalid">-->
 
-                            <div class="te-group" >
+                                <!--<p class="text-danger"-->
+                                   <!--ng-if="form.email.$error.required"-->
+                                   <!--ng-cloak>Email is required.</p>-->
 
-                                <p class="form-control-static te-value-readonly"
-                                   ng-show="!app.isEditable"
-                                   ng-cloak>{{app.user.lastName}}</p>
+                                <!--<p class="text-danger"-->
+                                   <!--ng-if="form.email.$error.email"-->
+                                   <!--ng-cloak>Please enter a valid email.</p>-->
 
-                                <input name="lastName"
-                                       type="text"
-                                       class="form-control te-value-editable"
-                                       ng-show="app.isEditable"
-                                       ng-cloak
-                                       ng-model="app.user.lastName"
-                                       required />
-                            </div>
-
-                            <p class="text-danger"
-                               ng-if="form.lastName.$error.required && app.isEditable && form.lastName.$touched && form.$invalid"
-                               ng-cloak>Last Name is required.</p>
-
-                        </div>
-
-
-                        <div class="form-group" ng-class="{'has-error':form.email.$invalid && form.email.$touched}">
-
-                            <label class="control-label">email</label>
-
-                            <div class="te-group" >
-
-                                <p class="form-control-static te-value-readonly"
-                                   ng-show="!app.isEditable">{{app.user.email}}</p>
-
-                                <input name="email"
-                                       type="email"
-                                       class="form-control te-value-editable"
-                                       ng-show="app.isEditable"
-                                       ng-cloak
-                                       ng-model="app.user.email"
-                                       required />
-                            </div>
-
-                            <div ng-if="app.isEditable && form.email.$touched && form.$invalid">
-
-                                <p class="text-danger"
-                                   ng-if="form.email.$error.required"
-                                   ng-cloak>Email is required.</p>
-
-                                <p class="text-danger"
-                                   ng-if="form.email.$error.email"
-                                   ng-cloak>Please enter a valid email.</p>
-
-                            </div>
+                            <!--</div>-->
 
 
-                        </div>
+                        <!--</div>-->
 
                         <p>
 
@@ -159,7 +130,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js"></script>
 
     <!-- src -->
-	<script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="directives/te-text-input/te-text-input.directive.js"></script>
+    <script type="text/javascript" src="app.js"></script>
 
 
 </body>
