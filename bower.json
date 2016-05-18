@@ -1,0 +1,28 @@
+{
+  "name": "angular.toggle-edit",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Christopher Lindsey"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "angularjs",
+    "bootstrap",
+    "gulp"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-animate": "^1.5.5",
+    "angular-mocks": "^1.5.5",
+    "angular": "^1.5.5"
+  }
+}

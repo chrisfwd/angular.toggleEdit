@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html ng-app="app">
+<head>
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ToggleEdit Demo</title>
+
+    <!-- import bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="toggleEdit.css">
+
+</head>
+
+<body ng-controller="AppController as app"
+      style="background-color: #e8e8e8; padding-top:100px;">
+
+    <form name="form"
+          novalidate
+          ng-submit="app.update(form)">
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-push-3 col-md-4 col-md-push-4">
+
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        <h2>Toggle Edit form <br>
+                            <small>using AngularJS & Bootstrap</small></h2>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="form-group"
+                             ng-class="{'has-error':form.firstName.$invalid && form.firstName.$touched}">
+
+                            <label class="control-label">First Name</label>
+
+                            <div class="te-group">
+                                <p class="form-control-static te-value-readonly"
+                                   ng-show="!app.isEditable"
+                                   ng-cloak >{{app.user.firstName}}</p>
+
+                                <input name="firstName"
+                                       type="text"
+                                       class="form-control te-value-editable"
+                                       ng-show="app.isEditable"
+                                       ng-cloak
+                                       ng-model="app.user.firstName"
+                                       required />
+                            </div>
+
+                            <p class="text-danger"
+                               ng-if="form.firstName.$error.required && app.isEditable && form.firstName.$touched && form.$invalid"
+                               ng-cloak>First Name is required.</p>
+
+                        </div>
+
+
+                        <div class="form-group"
+                             ng-class="{'has-error':form.lastName.$invalid && form.lastName.$touched}">
+
+                            <label class="control-label">Last Name</label>
+
+                            <div class="te-group" >
+
+                                <p class="form-control-static te-value-readonly"
+                                   ng-show="!app.isEditable"
+                                   ng-cloak>{{app.user.lastName}}</p>
+
+                                <input name="lastName"
+                                       type="text"
+                                       class="form-control te-value-editable"
+                                       ng-show="app.isEditable"
+                                       ng-cloak
+                                       ng-model="app.user.lastName"
+                                       required />
+                            </div>
+
+                            <p class="text-danger"
+                               ng-if="form.lastName.$error.required && app.isEditable && form.lastName.$touched && form.$invalid"
+                               ng-cloak>Last Name is required.</p>
+
+                        </div>
+
+
+                        <div class="form-group" ng-class="{'has-error':form.email.$invalid && form.email.$touched}">
+
+                            <label class="control-label">email</label>
+
+                            <div class="te-group" >
+
+                                <p class="form-control-static te-value-readonly"
+                                   ng-show="!app.isEditable">{{app.user.email}}</p>
+
+                                <input name="email"
+                                       type="email"
+                                       class="form-control te-value-editable"
+                                       ng-show="app.isEditable"
+                                       ng-cloak
+                                       ng-model="app.user.email"
+                                       required />
+                            </div>
+
+                            <div ng-if="app.isEditable && form.email.$touched && form.$invalid">
+
+                                <p class="text-danger"
+                                   ng-if="form.email.$error.required"
+                                   ng-cloak>Email is required.</p>
+
+                                <p class="text-danger"
+                                   ng-if="form.email.$error.email"
+                                   ng-cloak>Please enter a valid email.</p>
+
+                            </div>
+
+
+                        </div>
+
+                        <p>
+
+                            <button type="button"
+                                    class="btn btn-primary"
+                                    ng-if="!app.isEditable"
+                                    ng-cloak
+                                    ng-click="app.makeEditable()">Edit</button>
+
+                            <button type="submit"
+                                    class="btn btn-primary"
+                                    ng-if="app.isEditable"
+                                    ng-cloak
+                                    ng-disabled="form.$invalid">Save</button>
+
+                            <button type="button"
+                                    class="btn btn-default"
+                                    ng-if="app.isEditable"
+                                    ng-cloak
+                                    ng-click="app.cancelChanges()">Cancel</button>
+                        </p>
+
+                        <p class="alert alert-danger"
+                           ng-show="form.$invalid && !form.$pristine"
+                           ng-cloak>Check above for errors.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js"></script>
+
+    <!-- src -->
+	<script type="text/javascript" src="app.js"></script>
+
+
+</body>
+</html>
