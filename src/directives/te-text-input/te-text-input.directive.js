@@ -5,10 +5,10 @@
 (function(){
     "use strict";
 
-    angular.module('teTextInput', [])
-        .directive('teTextInput', teTextInputDirective);
+    angular.module('app.textInput', [])
+        .directive('teTextInput', textInputDirective);
             
-    function teTextInputDirective() {
+    function textInputDirective() {
         return {
             restrict: 'E',
             scope: {

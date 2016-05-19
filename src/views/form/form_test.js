@@ -1,11 +1,16 @@
-describe('AppController', function(){
+/**
+ * Created by clindsey on 5/19/2016.
+ */
 
-    beforeEach(module('app'));
+
+describe('formController', function(){
+
+    beforeEach(module('app.form'));
 
     describe('makeEditable()', function(){
         it('should change value of isEditable', inject(function($controller){
 
-            var myController = $controller('AppController');
+            var myController = $controller('formController');
             myController.isEditable = false;
             myController.makeEditable();
 
@@ -17,7 +22,7 @@ describe('AppController', function(){
 
         it('should return false for invalid form', inject(function($controller){
 
-            var myController = $controller('AppController');
+            var myController = $controller('formController');
             myController.isEditable = true;
             var form = {$valid: false};
 
@@ -26,11 +31,11 @@ describe('AppController', function(){
 
         it('should overwrite master data with user data', inject(function($controller){
 
-            var myController = $controller('AppController');
+            var myController = $controller('formController');
             var form = {$valid: true};
             myController.isEditable = true;
             myController.master = {};
-            myController.user = {firstName: "Chris"};
+            myController.user = {firstName: 'Chris'};
             myController.update(form);
 
             expect(myController.master).to.deep.equal(myController.user);
@@ -38,7 +43,7 @@ describe('AppController', function(){
 
         it('should set editable to false', inject(function($controller){
 
-            var myController = $controller('AppController');
+            var myController = $controller('formController');
             var form = {$valid: true};
             myController.isEditable = true;
             myController.master = {};
@@ -54,7 +59,7 @@ describe('AppController', function(){
 
         it('should overwrite user data with master data', inject(function($controller){
 
-            var myController = $controller('AppController');
+            var myController = $controller('formController');
             var form = {$valid: true};
             myController.master = {firstName: "Chris"};
             myController.user = {};
@@ -65,7 +70,7 @@ describe('AppController', function(){
 
         it('should set editable to false', inject(function($controller){
 
-            var myController = $controller('AppController');
+            var myController = $controller('formController');
             var form = {$valid: true};
             myController.isEditable = true;
             myController.cancelChanges(form);

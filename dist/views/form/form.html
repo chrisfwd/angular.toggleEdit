@@ -1,0 +1,82 @@
+<form ng-controller="FormController as app"
+      name="demoForm"
+      novalidate
+      ng-submit="app.update(demoForm)">
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-push-3 col-md-4 col-md-push-4">
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <h2>Toggle Edit form <br>
+                        <small>using AngularJS & Bootstrap</small></h2>
+                </div>
+
+                <div class="panel-body">
+
+                    <te-text-input
+                            te-form="demoForm"
+                            te-input-type="'text'"
+                            te-label="'First Name'"
+                            te-value="app.user.firstName"
+                            te-required="true"
+                            te-is-editable="app.isEditable"></te-text-input>
+
+                    <te-text-input
+                            te-form="demoForm"
+                            te-input-type="'text'"
+                            te-label="'Last Name'"
+                            te-value="app.user.lastName"
+                            te-is-editable="app.isEditable"></te-text-input>
+
+                    <te-text-input
+                            te-form="demoForm"
+                            te-input-type="'email'"
+                            te-label="'Email'"
+                            te-value="app.user.email"
+                            te-required="true"
+                            te-is-editable="app.isEditable"></te-text-input>
+
+                    <te-text-input
+                        te-form="demoForm"
+                        te-input-type="'text'"
+                        te-label="'Friend'"
+                        te-value="app.user.friend"
+                        te-required="false"
+                        te-is-editable="app.isEditable"></te-text-input>
+
+                    <p>
+
+                        <button type="button"
+                                class="btn btn-primary"
+                                ng-if="!app.isEditable"
+                                ng-cloak
+                                ng-click="app.makeEditable()">Edit</button>
+
+                        <button type="submit"
+                                class="btn btn-primary"
+                                ng-if="app.isEditable"
+                                ng-cloak
+                                ng-disabled="demoForm.$invalid">Save</button>
+
+                        <button type="button"
+                                class="btn btn-default"
+                                ng-if="app.isEditable"
+                                ng-cloak
+                                ng-click="app.cancelChanges()">Cancel</button>
+                    </p>
+
+                    <p class="alert alert-danger"
+                       ng-show="demoForm.$invalid && !form.$pristine"
+                       ng-cloak>Check above for errors.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>

@@ -1,5 +1,10 @@
-[ng\:cloak], [ng-cloak], .ng-cloak {
-    display: none;
+
+// prevent hidden elements on home page
+// from displaying before angular hides them
+[ng\:cloak],
+[ng-cloak],
+.ng-cloak {
+  display: none;
 }
 
 @import "directives/te-text-input/te-text-input.directive";
