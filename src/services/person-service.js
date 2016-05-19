@@ -3,7 +3,7 @@
  */
 
 (function (angular) {
-    "use strict";
+    'use strict';
 
     angular.module('app.personService', [])
         .factory('personService', [personService]);
@@ -17,10 +17,10 @@
 
         function getPerson(){
             return {
-                firstName: "Chris",
-                lastName: "Lindsey",
-                email: "chris@gmail.com",
-                friend: "Jason"
+                firstName: 'Chris',
+                lastName: 'Lindsey',
+                email: 'chris@gmail.com',
+                friend: 'Jason'
             };
         }
 

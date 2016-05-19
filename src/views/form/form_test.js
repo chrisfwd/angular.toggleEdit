@@ -47,7 +47,7 @@ describe('formController', function(){
             var form = {$valid: true};
             myController.isEditable = true;
             myController.master = {};
-            myController.user = {firstName: "Chris"};
+            myController.user = {firstName: 'Chris'};
             myController.update(form);
 
             expect(myController.isEditable).to.be.false;
@@ -61,7 +61,7 @@ describe('formController', function(){
 
             var myController = $controller('formController');
             var form = {$valid: true};
-            myController.master = {firstName: "Chris"};
+            myController.master = {firstName: 'Chris'};
             myController.user = {};
             myController.cancelChanges(form);
 

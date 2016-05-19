@@ -6,21 +6,23 @@
     'use strict';
 
     angular.module('app.form', [
-        'ngRoute',
+        'ui.router',
         'app.personService'])
 
-        .config(['$routeProvider', routeProvider])
+        .config(['$stateProvider', routeProvider])
 
         .controller('FormController', ['personService', FormController]);
     
     
 
-    function routeProvider($routeProvider){
+    function routeProvider($stateProvider){
 
-        $routeProvider.when('/form', {
-            templateUrl: 'views/form/form.html',
-            controller: 'FormController'
-        });
+        $stateProvider
+            .state('form', {
+                url: '/form',
+                templateUrl: 'views/form/form.html',
+                controller: 'FormController'
+            });
 
     }
     

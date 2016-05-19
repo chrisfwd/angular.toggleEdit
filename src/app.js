@@ -1,21 +1,21 @@
 (function(angular){
-    "use strict";
+    'use strict';
 
     angular
         .module('app', [
             'ngAnimate',
-            'ngRoute',
+            'ui.router',
             'app.textInput',
             'app.form',
             'app.personService'])
 
-        .config(['$routeProvider', routeProvider]);
+        .config(routeProvider);
 
 
 
-    function routeProvider($routeProvider){
+    function routeProvider($urlRouterProvider){
 
-        $routeProvider.otherwise({redirectTo: '/form'});
+        $urlRouterProvider.otherwise('form');
 
     }
 

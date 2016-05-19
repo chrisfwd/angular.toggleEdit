@@ -27,7 +27,7 @@
 
     var jsFiles = [
         './bower_components/angular/angular.js',
-        './bower_components/angular-route/angular-route.js',
+        './bower_components/angular-ui-router/release/angular-ui-router.js',
         './bower_components/angular-animate/angular-animate.js',
         './src/directives/te-text-input/te-text-input.directive.js',
         './src/services/person-service.js',
