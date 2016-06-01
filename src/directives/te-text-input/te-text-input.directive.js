@@ -5,7 +5,7 @@
 (function(){
     "use strict";
 
-    angular.module('app.textInput', [])
+    angular.module('app.textInput')
         .directive('teTextInput', textInputDirective);
             
     function textInputDirective() {
@@ -19,15 +19,15 @@
                 inputType: '=teInputType',
                 isRequired: '=teRequired'
             },
-            link: linkFunction,
-            templateUrl: 'directives/te-text-input/te-text-input.directive.html'
+            templateUrl: 'directives/te-text-input/te-text-input.directive.view.html',
+            controller: ['$scope', teTextInputController]
         };
+    }
 
-        function linkFunction(scope, element, attrs, controllers) {
-            //debugger;
-            scope.inputName = scope.form.$name + "." + scope.label.replace(/ /g,'').toLowerCase() + scope.$id;
+    function teTextInputController($scope){
 
-        }
+        $scope.inputName = $scope.form.$name + "." + $scope.label.replace(/ /g,'').toLowerCase() + $scope.$id;
+
     }
 
 })();

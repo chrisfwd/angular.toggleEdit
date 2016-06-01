@@ -2,12 +2,7 @@
     "use strict";
 
     angular
-        .module('app', [
-            'ngAnimate',
-            'ngRoute',
-            'app.textInput',
-            'app.form',
-            'app.personService'])
+        .module('app')
 
         .config(['$routeProvider', routeProvider]);
 
