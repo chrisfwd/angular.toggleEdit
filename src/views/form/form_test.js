@@ -1,7 +1,9 @@
+
 /**
  * Created by clindsey on 5/19/2016.
  */
 
+/*jshint expr: true*/
 
 describe('formController', function(){
 

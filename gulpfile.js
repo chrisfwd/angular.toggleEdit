@@ -5,20 +5,25 @@
      * IMPORT TASKS
      */
 
-    var gulp = require('gulp');
-    var sass = require('gulp-sass');
-    var clean = require('gulp-clean');
-    var concat = require('gulp-concat');
+    var gulp = require('gulp'),
+        sass = require('gulp-sass'),
+        clean = require('gulp-clean'),
+        concat = require('gulp-concat'),
+        connect = require('gulp-connect'),
+        Server = require('karma').Server;;
 
 
     /*
      * CONFIGURATION
      */
 
-    gulp.task('clean', cleanTask);
+    gulp.task('clean', ['test'], cleanTask);
+    gulp.task('test', testTask);
     gulp.task('copy', ['clean'], copyTask);
     gulp.task('sass', ['clean'], sassTask);
-    gulp.task('js', ['clean'], jsTask);
+    gulp.task('js', ['test', 'clean'], jsTask);
+    gulp.task('webServer', webServerTask);
+    gulp.task('serve', ['js', 'sass', 'copy', 'webServer'], serveTask);
     gulp.task('default', ['js', 'sass', 'copy'], defaultTask);
 
 
@@ -50,14 +55,9 @@
     }
 
     function copyTask() {
-
         return gulp
             .src(copyFiles)
             .pipe(gulp.dest(copyDest));
-
-    }
-
-    function defaultTask() {
     }
 
     function jsTask(){
@@ -68,11 +68,27 @@
     }
 
     function sassTask() {
-
         return gulp
             .src(sassFiles)
             .pipe(sass().on('error', sass.logError))
             .pipe(gulp.dest(sassDest));
-
     }
+
+    function webServerTask(){
+        connect.server({
+            root: ['./dist']
+        });
+    }
+
+    function serveTask(){}
+
+    function testTask(done){
+        new Server({
+            configFile: __dirname + '/karma.conf.js',
+            singleRun: true
+        }, done).start();
+    }
+
+    function defaultTask(){}
+
 })();

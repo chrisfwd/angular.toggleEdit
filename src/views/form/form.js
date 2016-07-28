@@ -9,13 +9,13 @@
         'ui.router',
         'app.personService'])
 
-        .config(['$stateProvider', routeProvider])
+        .config(['$stateProvider', stateProvider])
 
         .controller('FormController', ['personService', FormController]);
     
     
 
-    function routeProvider($stateProvider){
+    function stateProvider($stateProvider){
 
         $stateProvider
             .state('form', {
